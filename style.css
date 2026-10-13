@@ -134,6 +134,9 @@ time, .fig, .readout, .v-label, .v-unit, .scan-meta, .edu-year, .pub-year, code,
 .now-list { display: flex; flex-direction: column; gap: 4px; }
 .now-list li { font-size: .88rem; line-height: 1.45; }
 .now-list li span { display: block; font: .72rem "IBM Plex Mono", monospace; color: var(--muted); }
+.now-list a { color: var(--teal); }
+.now-list a:hover, .ev .org a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ev .org a { color: inherit; border-bottom: 1px dotted currentColor; }
 .now-list li + li { padding-top: 6px; border-top: 1px dashed var(--border); }
 .pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
 .pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--teal); animation: ping 1.6s ease-out infinite; }
