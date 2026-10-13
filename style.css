@@ -348,3 +348,19 @@ code { font-size: .8rem; color: var(--muted); }
   .reveal { opacity: 1; transform: none; transition: none; }
   .pulse::after { animation: none; }
 }
+
+/* ---------------- Print / PDF ---------------- */
+@media print {
+  :root { --bg: #fff; --bg-alt: #fff; --surface: #fff; --text: #0f1b2d; --muted: #444; --border: #ccc; --teal: #0f766e; --coral: #be123c; }
+  body { background: #fff; color: #0f1b2d; font-size: 11pt; }
+  .boot, .progress, .nav, .grid-bg, .ecg, .scan-line, .lens, .corner, .scan-meta, .theme-switch, .nazar { display: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .hero { min-height: 0; padding: 0 0 16px; }
+  .hero-grid { grid-template-columns: 1.6fr 1fr; gap: 24px; }
+  .scan-frame { box-shadow: none; }
+  .scan-frame canvas { display: none; }
+  .block { padding: 20px 0; break-inside: auto; }
+  .tile, .ev, .pub, .proj, .edu-card, .h-list li { break-inside: avoid; }
+  .contact .mail { color: #0f766e; background: none; -webkit-background-clip: border-box; }
+  a { color: inherit; }
+}

@@ -11,13 +11,13 @@
   var bootStatus = document.getElementById("bootStatus");
   var onBooted = [];
   function finishBoot() {
-    boot.classList.add("done");
+    if (boot) boot.classList.add("done");
     store("booted", "1");
     onBooted.forEach(function (fn) { fn(); });
     onBooted = [];
   }
-  if (reduceMotion || read("booted")) {
-    boot.style.display = "none";
+  if (!boot || reduceMotion || read("booted")) {
+    if (boot) boot.style.display = "none";
     setTimeout(finishBoot, 0);
   } else {
     setTimeout(function () { bootStatus.textContent = "loading clinical models…"; }, 700);
@@ -26,17 +26,18 @@
     var close = function () { setTimeout(finishBoot, Math.max(0, 1700 - (performance.now() - started))); };
     if (document.readyState === "complete") close(); else addEventListener("load", close);
   }
-  function whenBooted(fn) { if (boot.classList.contains("done")) fn(); else onBooted.push(fn); }
+  function whenBooted(fn) { if (!boot || boot.classList.contains("done")) fn(); else onBooted.push(fn); }
 
   /* ---------------- Theme switch ---------------- */
   var themeSwitch = document.getElementById("themeSwitch");
   var themeListeners = [];
   function syncSwitch() {
+    if (!themeSwitch) return;
     var light = root.dataset.theme === "light";
     themeSwitch.setAttribute("aria-checked", String(light));
     document.querySelector('meta[name="theme-color"]').content = light ? "#f5f8fa" : "#0a1220";
   }
-  themeSwitch.addEventListener("click", function () {
+  if (themeSwitch) themeSwitch.addEventListener("click", function () {
     var next = root.dataset.theme === "light" ? "dark" : "light";
     root.dataset.theme = next;
     try { localStorage.setItem("theme", next); } catch (e) {}
@@ -50,7 +51,8 @@
   var nav = document.getElementById("nav");
   var progress = document.getElementById("progress");
   function onScroll() {
-    nav.classList.toggle("scrolled", scrollY > 20);
+    if (nav) nav.classList.toggle("scrolled", scrollY > 20);
+    if (!progress) return;
     var max = document.documentElement.scrollHeight - innerHeight;
     progress.style.width = (max > 0 ? scrollY / max * 100 : 0) + "%";
   }
@@ -115,6 +117,7 @@
     paintFalseColour();
     whenBooted(function () { setTimeout(runScan, 250); });
   }
+  if (frame && img && falseCanvas && modeLabel) {
   if (img.complete && img.naturalWidth) setupScan(); else img.addEventListener("load", setupScan);
 
   // spectral lens follows the pointer once the scan is done
@@ -130,7 +133,8 @@
   });
   // touch: tap to drop the lens, it lifts after a moment
   var touchTimer = null;
-  if (matchMedia("(hover: none)").matches) document.getElementById("scanHint").textContent = "tap to inspect";
+  var hint = document.getElementById("scanHint");
+  if (hint && matchMedia("(hover: none)").matches) hint.textContent = "tap to inspect";
   frame.addEventListener("pointerdown", function (e) {
     if (e.pointerType === "mouse" || !frame.classList.contains("done")) return;
     var r = frame.getBoundingClientRect();
@@ -147,6 +151,7 @@
     frame.classList.remove("lensing");
     modeLabel.textContent = "MODE · RGB · subject located";
   });
+  }
 
   /* ---------------- ECG monitor strip ---------------- */
   var ecg = document.getElementById("ecg");
@@ -257,7 +262,7 @@
           if (p < 1) requestAnimationFrame(up);
         })(t0);
       });
-    }, { threshold: 0.4 }).observe(document.querySelector(".vitals"));
+    }, { threshold: 0.4 }).observe(document.querySelector(".vitals") || document.body);
   }
 
   /* ---------------- Nazar: watches the cursor, blinks now and then ---------------- */
@@ -287,5 +292,6 @@
     nazar.addEventListener("click", blink);
   }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
