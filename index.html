@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@600&text=%E0%A5%90&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=202610132002">
+  <link rel="stylesheet" href="style.css?v=202610132008">
   <script>
     // Apply theme before first paint: saved choice, else system preference
     (function () {
@@ -88,7 +88,13 @@
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="status"><span class="pulse"></span>Now · federated learning for surgical oncology @ NCT Dresden</p>
+        <div class="now">
+          <span class="now-label"><span class="pulse"></span>Now</span>
+          <ul class="now-list">
+            <li>Federated learning for surgical oncology <span>NCT Dresden · Prof. Speidel's group</span></li>
+            <li>SWIR imaging for image-guided cancer surgery <span>NCT &amp; DKFZ · Dr. Bruns' lab</span></li>
+          </ul>
+        </div>
         <h1>Syna<span class="dot">.</span></h1>
         <p class="role">AI researcher <span class="sep">/</span> AI for healthcare</p>
         <p class="lede">
@@ -182,13 +188,13 @@
     <div class="wrap">
       <header class="block-head"><span class="fig">02</span><h2>Experience</h2></header>
       <ol class="spine">
-        <li class="ev">
+        <li class="ev current">
           <time>Jun 2026 — now</time>
           <h3>Student Research Assistant</h3>
           <p class="org">NCT Dresden, TUD &amp; UKDD · Prof. Speidel's group (TSO)</p>
           <p>Developing privacy-preserving federated learning architectures for surgical oncology models, enabling decentralized training across clinical datasets.</p>
         </li>
-        <li class="ev">
+        <li class="ev current">
           <time>Oct 2025 — now</time>
           <h3>Student Research Assistant</h3>
           <p class="org">NCT &amp; DKFZ Dresden · Dr. Oliver Bruns' lab</p>
@@ -434,6 +440,6 @@
   <p class="foot-line">made with care in Dresden · © <span id="year">2026</span> Syna</p>
 </footer>
 
-<script src="script.js?v=202610132002"></script>
+<script src="script.js?v=202610132008"></script>
 </body>
 </html>
