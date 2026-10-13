@@ -260,3 +260,4 @@ section:nth-of-type(even) .tl-item::before { border-color: var(--bg-b); }
 
 /* View-transition theme switch: let the clip-path animation do the work */
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+.section-link { margin: -16px 0 24px; }
