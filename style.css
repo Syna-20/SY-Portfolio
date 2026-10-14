@@ -366,11 +366,121 @@ code { font-size: .8rem; color: var(--muted); }
   .pulse::after { animation: none; }
 }
 
+/* =========================================================
+   Colour layer — monitor-style multi-accent palette
+   ========================================================= */
+:root, :root[data-theme="dark"] {
+  --sky: #38bdf8;
+  --violet: #a78bfa;
+  --pink: #f472b6;
+  --grad: linear-gradient(100deg, #2dd4bf 0%, #38bdf8 40%, #a78bfa 75%, #f472b6 100%);
+  --aurora-op: .55;
+}
+:root[data-theme="light"] {
+  --sky: #0284c7;
+  --violet: #7c3aed;
+  --pink: #db2777;
+  --grad: linear-gradient(100deg, #0f8f83 0%, #0284c7 40%, #7c3aed 75%, #db2777 100%);
+  --aurora-op: .35;
+}
+
+/* Aurora glow behind the hero */
+.aurora { position: absolute; inset: 0; pointer-events: none; overflow: hidden; filter: blur(70px); opacity: var(--aurora-op); }
+.aurora i { position: absolute; border-radius: 50%; mix-blend-mode: screen; animation: drift 18s ease-in-out infinite alternate; }
+:root[data-theme="light"] .aurora i { mix-blend-mode: multiply; }
+.aurora .a1 { width: 520px; height: 520px; left: 52%; top: 4%; background: radial-gradient(circle, var(--teal), transparent 65%); }
+.aurora .a2 { width: 460px; height: 460px; left: 70%; top: 38%; background: radial-gradient(circle, var(--violet), transparent 65%); animation-delay: -6s; animation-duration: 22s; }
+.aurora .a3 { width: 380px; height: 380px; left: 6%; top: 58%; background: radial-gradient(circle, var(--sky), transparent 65%); animation-delay: -11s; animation-duration: 26s; opacity: .7; }
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-60px, 40px) scale(1.12); }
+  100% { transform: translate(40px, -30px) scale(.94); }
+}
+
+/* Name in gradient, coral full stop */
+.hero h1 {
+  background: var(--grad); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: sheen 9s ease-in-out infinite alternate;
+}
+.hero h1 .dot { -webkit-text-fill-color: var(--coral); color: var(--coral); }
+@keyframes sheen { to { background-position: 100% 0; } }
+.role .sep { color: var(--violet); }
+
+/* Highlights cycle through the palette */
+.lede mark:nth-of-type(5n+1) { background-image: linear-gradient(transparent 60%, color-mix(in srgb, var(--teal) 26%, transparent) 60%); }
+.lede mark:nth-of-type(5n+2) { background-image: linear-gradient(transparent 60%, color-mix(in srgb, var(--sky) 26%, transparent) 60%); }
+.lede mark:nth-of-type(5n+3) { background-image: linear-gradient(transparent 60%, color-mix(in srgb, var(--violet) 28%, transparent) 60%); }
+.lede mark:nth-of-type(5n+4) { background-image: linear-gradient(transparent 60%, color-mix(in srgb, var(--pink) 26%, transparent) 60%); }
+.lede mark:nth-of-type(5n+5) { background-image: linear-gradient(transparent 60%, color-mix(in srgb, var(--amber) 28%, transparent) 60%); }
+.lede mark { background-color: transparent; }
+
+/* Now panel + chips */
+.now { border-color: color-mix(in srgb, var(--teal) 35%, var(--border)); box-shadow: 0 0 0 1px color-mix(in srgb, var(--teal) 8%, transparent), 0 10px 30px -12px color-mix(in srgb, var(--teal) 45%, transparent); }
+.chip-link { position: relative; }
+.chip-link:hover { color: var(--text); border-color: transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--grad) border-box; border: 1px solid transparent; }
+.chip-link:hover svg { color: var(--teal); }
+
+/* Photo: gradient ring + coloured glow */
+.scan-frame {
+  border: 2px solid transparent;
+  background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--grad) border-box;
+  box-shadow: var(--shadow), 0 0 60px -10px color-mix(in srgb, var(--violet) 45%, transparent);
+}
+.corner { border-color: #fff; opacity: .9; }
+
+/* Vitals: one colour per channel, like a patient monitor */
+.vital { --c: var(--teal); }
+.vital .v-label, .vital .v-num { color: var(--c); }
+.vital .v-num { text-shadow: 0 0 20px color-mix(in srgb, var(--c) 45%, transparent); }
+.vital { border-left-color: color-mix(in srgb, var(--c) 30%, var(--border)); }
+
+/* Section heads: gradient rule */
+.block-head { position: relative; border-bottom-color: var(--border); }
+.block-head::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 140px; height: 2px; background: var(--grad); border-radius: 2px; }
+.fig { color: var(--violet); }
+
+/* Focus tiles: individual accents */
+.tile { --c: var(--teal); }
+.tile::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--c), transparent); opacity: .9; }
+.tile svg { color: var(--c); padding: 8px; width: 44px; height: 44px; border-radius: 12px; background: color-mix(in srgb, var(--c) 14%, transparent); }
+.tile::after { background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--c) 16%, transparent), transparent 70%); }
+.tile h3 { transition: color .3s; }
+.tile:hover h3 { color: var(--c); }
+.stack-row span:not(.stack-label):hover { border-color: var(--violet); color: var(--violet); }
+
+/* Experience spine in gradient */
+.spine::before { background: linear-gradient(var(--teal), var(--sky) 35%, var(--violet) 70%, var(--pink)); opacity: .8; }
+.ev:nth-child(3)::before { border-color: var(--sky); }
+.ev:nth-child(4)::before, .ev:nth-child(5)::before { border-color: var(--violet); }
+.ev:nth-child(6)::before, .ev:nth-child(7)::before { border-color: var(--pink); }
+.edu-card { border-top: 3px solid transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--grad) border-box; border-left-color: var(--border); border-right-color: var(--border); border-bottom-color: var(--border); }
+
+/* Publications */
+.pub-year { display: inline-block; height: fit-content; padding: 1px 10px; border-radius: 999px; background: color-mix(in srgb, var(--violet) 14%, transparent); color: var(--violet); font-size: .8rem; justify-self: start; }
+.pub:hover { background: linear-gradient(90deg, color-mix(in srgb, var(--violet) 6%, transparent), transparent 60%); }
+
+/* Projects: each card in its own hue */
+.proj { --c: var(--teal); }
+.proj .readout { color: var(--c); background: color-mix(in srgb, var(--c) 15%, transparent); }
+.proj .tags { color: var(--c); }
+.proj:hover { border-color: var(--c); box-shadow: var(--shadow), 0 0 40px -14px var(--c); }
+.proj.wide { background: linear-gradient(120deg, var(--surface) 45%, color-mix(in srgb, var(--violet) 14%, transparent) 75%, color-mix(in srgb, var(--teal) 14%, transparent)); }
+
+/* Honors + contact */
+.h-col h4 { color: var(--violet); }
+.contact .mail { background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.progress { background: var(--grad); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora i, .hero h1 { animation: none; }
+}
+
 /* ---------------- Print / PDF ---------------- */
 @media print {
   :root { --bg: #fff; --bg-alt: #fff; --surface: #fff; --text: #0f1b2d; --muted: #444; --border: #ccc; --teal: #0f766e; --coral: #be123c; }
   body { background: #fff; color: #0f1b2d; font-size: 11pt; }
-  .boot, .progress, .nav, .grid-bg, .ecg, .scan-line, .lens, .corner, .scan-meta, .theme-switch, .nazar { display: none !important; }
+  .boot, .progress, .nav, .grid-bg, .aurora, .ecg, .scan-line, .lens, .corner, .scan-meta, .theme-switch, .nazar { display: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero { min-height: 0; padding: 0 0 16px; }
   .hero-grid { grid-template-columns: 1.6fr 1fr; gap: 24px; }
@@ -380,4 +490,5 @@ code { font-size: .8rem; color: var(--muted); }
   .tile, .ev, .pub, .proj, .edu-card, .h-list li { break-inside: avoid; }
   .contact .mail { color: #0f766e; background: none; -webkit-background-clip: border-box; }
   a { color: inherit; }
+  .hero h1 { background: none; color: #0f1b2d; -webkit-text-fill-color: #0f1b2d; }
 }
