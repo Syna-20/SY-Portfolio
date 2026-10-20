@@ -501,6 +501,7 @@ h1 { font-size: clamp(3.2rem, 7.5vw, 5.4rem); margin-top: 18px; }
 .vital .v-unit { order: 2; font: 600 .86rem "Space Grotesk", sans-serif; color: var(--text); }
 .v-detail { order: 3; font: .72rem/1.4 "IBM Plex Mono", monospace; color: var(--muted); margin-top: 2px; }
 .v-detail i { font-style: italic; }
+.v-collab { color: var(--violet); }
 
 .block { padding: 84px 0; }
 .block-head { margin-bottom: 30px; }
