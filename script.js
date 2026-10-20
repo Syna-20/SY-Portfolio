@@ -20,10 +20,10 @@
     if (boot) boot.style.display = "none";
     setTimeout(finishBoot, 0);
   } else {
-    setTimeout(function () { bootStatus.textContent = "loading clinical models…"; }, 700);
-    setTimeout(function () { bootStatus.textContent = "ready"; }, 1350);
+    setTimeout(function () { bootStatus.textContent = "loading clinical models…"; }, 400);
+    setTimeout(function () { bootStatus.textContent = "ready"; }, 750);
     var started = performance.now();
-    var close = function () { setTimeout(finishBoot, Math.max(0, 1700 - (performance.now() - started))); };
+    var close = function () { setTimeout(finishBoot, Math.max(0, 950 - (performance.now() - started))); };
     if (document.readyState === "complete") close(); else addEventListener("load", close);
   }
   function whenBooted(fn) { if (!boot || boot.classList.contains("done")) fn(); else onBooted.push(fn); }

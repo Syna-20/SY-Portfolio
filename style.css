@@ -63,7 +63,7 @@ time, .fig, .readout, .v-label, .v-unit, .scan-meta, .edu-year, .pub-year, code,
 .boot {
   position: fixed; inset: 0; z-index: 100; display: grid; place-content: center; justify-items: center; gap: 14px;
   background: var(--bg);
-  animation: boot-failsafe .5s 3.2s forwards; /* hides even if JS never runs */
+  animation: boot-failsafe .4s 2.2s forwards; /* hides even if JS never runs */
 }
 .boot.done { opacity: 0; visibility: hidden; transition: opacity .6s, visibility .6s; }
 .boot-ecg { width: min(560px, 80vw); height: 110px; }
@@ -71,9 +71,9 @@ time, .fig, .readout, .v-label, .v-unit, .scan-meta, .edu-year, .pub-year, code,
   stroke: var(--teal); stroke-width: 2.4; fill: none;
   stroke-dasharray: 900; stroke-dashoffset: 900;
   filter: drop-shadow(0 0 6px var(--teal));
-  animation: draw 1.4s ease-in-out forwards;
+  animation: draw .85s ease-in-out forwards;
 }
-.boot-name { font-size: 2.4rem; font-weight: 700; letter-spacing: -.02em; opacity: 0; animation: fade-in .5s .9s forwards; }
+.boot-name { font-size: 2.4rem; font-weight: 700; letter-spacing: -.02em; opacity: 0; animation: fade-in .35s .45s forwards; }
 .boot-name span { color: var(--teal); }
 .boot-status { font-size: .78rem; color: var(--muted); letter-spacing: .06em; opacity: 0; animation: fade-in .4s .3s forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -476,11 +476,92 @@ code { font-size: .8rem; color: var(--muted); }
   .aurora i, .hero h1 { animation: none; }
 }
 
+/* =========================================================
+   Signal-first layout — strongest evidence above the fold
+   ========================================================= */
+.hero { min-height: 0; padding: 96px 0 36px; }
+.hero-grid { gap: 48px; }
+h1 { font-size: clamp(3.2rem, 7.5vw, 5.4rem); margin-top: 18px; }
+.lede { margin-top: 16px; }
+.links { margin-top: 22px; }
+.scan { width: min(360px, 100%); }
+
+.vitals { padding: 0 0 22px; }
+.ecg { height: 64px; }
+.vitals-row { grid-template-columns: repeat(5, 1fr); }
+.vital {
+  display: flex; flex-direction: column; gap: 2px; padding: 6px 16px 4px;
+  color: inherit; text-decoration: none; border-radius: 10px; transition: background .2s;
+}
+.vital:hover { background: color-mix(in srgb, var(--c) 8%, transparent); }
+.vital:first-child { padding-left: 16px; }
+.vital .v-label { order: 0; font-size: .66rem; align-self: flex-start; }
+.vital .v-num { align-self: flex-start; }
+.vital .v-num { order: 1; font-size: 2.3rem; line-height: 1.05; justify-self: auto; }
+.vital .v-unit { order: 2; font: 600 .86rem "Space Grotesk", sans-serif; color: var(--text); }
+.v-detail { order: 3; font: .72rem/1.4 "IBM Plex Mono", monospace; color: var(--muted); margin-top: 2px; }
+.v-detail i { font-style: italic; }
+
+.block { padding: 84px 0; }
+.block-head { margin-bottom: 30px; }
+
+/* tighter experience spine */
+.ev { padding-bottom: 20px; }
+.ev + .ev { margin-top: -78px; }
+.ev p:last-child { font-size: .88rem; }
+
+/* folded student projects */
+.more { margin-top: 18px; }
+.more summary {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none;
+  padding: 9px 16px; border-radius: 10px; font-size: .9rem; font-weight: 500;
+  border: 1px dashed var(--border); color: var(--muted); transition: color .2s, border-color .2s;
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::before { content: "+"; font: 600 1rem "IBM Plex Mono", monospace; color: var(--violet); }
+.more[open] summary::before { content: "−"; }
+.more summary:hover { color: var(--text); border-color: var(--violet); }
+.more .proj-grid { margin-top: 16px; }
+.proj-grid.top { grid-template-columns: repeat(2, 1fr); }
+.proj-grid.top .proj.wide { grid-column: span 2; }
+
+@media (max-width: 960px) {
+  .vitals-row { grid-template-columns: repeat(3, 1fr); row-gap: 14px; }
+}
+@media (max-width: 640px) {
+  .proj-grid.top { grid-template-columns: 1fr; }
+  .proj-grid.top .proj.wide { grid-column: auto; }
+  .hero { padding-top: 84px; }
+  /* photo becomes a thumbnail beside the name so credentials stay near the top */
+  .hero-grid {
+    grid-template-columns: 1fr 112px; column-gap: 14px; row-gap: 0;
+    grid-template-areas: "now now" "name photo" "role photo" "lede lede" "links links";
+    align-items: center;
+  }
+  .hero-copy { display: contents; }
+  .hero-copy .now { grid-area: now; margin-bottom: 6px; }
+  .hero-copy h1 { grid-area: name; }
+  .hero-copy .role { grid-area: role; align-self: start; font-size: 1rem; }
+  .hero-copy .lede { grid-area: lede; }
+  .hero-copy .links { grid-area: links; }
+  .scan { grid-area: photo; width: 112px; justify-self: end; align-self: end; }
+  .scan-frame { border-radius: 16px; }
+  .scan-meta, .bbox span, .corner { display: none; }
+  .links { gap: 8px; }
+  .chip-link { padding: 7px 12px; font-size: .84rem; }
+  .vitals-row { grid-template-columns: 1fr 1fr; }
+  .vital, .vital:first-child, .vital:nth-child(3) { padding: 6px 10px; border-left: 0; }
+  .vital:last-child { grid-column: span 2; }
+  .vital .v-num { font-size: 1.9rem; }
+  .ev + .ev { margin-top: 0; }
+  .block { padding: 64px 0; }
+}
+
 /* ---------------- Print / PDF ---------------- */
 @media print {
   :root { --bg: #fff; --bg-alt: #fff; --surface: #fff; --text: #0f1b2d; --muted: #444; --border: #ccc; --teal: #0f766e; --coral: #be123c; }
   body { background: #fff; color: #0f1b2d; font-size: 11pt; }
-  .boot, .progress, .nav, .grid-bg, .aurora, .ecg, .scan-line, .lens, .corner, .scan-meta, .theme-switch, .nazar { display: none !important; }
+  .boot, .progress, .nav, .grid-bg, .aurora, .more summary, .ecg, .scan-line, .lens, .corner, .scan-meta, .theme-switch, .nazar { display: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero { min-height: 0; padding: 0 0 16px; }
   .hero-grid { grid-template-columns: 1.6fr 1fr; gap: 24px; }

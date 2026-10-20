@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@600&text=%E0%A5%90&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=202610141645">
+  <link rel="stylesheet" href="style.css?v=202610201124">
   <script>
     // Apply theme before first paint: saved choice, else system preference
     (function () {
@@ -67,11 +67,11 @@
       <span>syna<span class="dot">.</span></span>
     </a>
     <nav class="nav-links" aria-label="Sections">
-      <a href="#focus">Focus</a>
-      <a href="#experience">Experience</a>
       <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#honors">Awards</a>
+      <a href="#focus">Focus</a>
       <a href="#projects">Projects</a>
-      <a href="#honors">Honors</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="theme-switch" id="themeSwitch" type="button" role="switch" aria-label="Light mode" aria-checked="false">
@@ -98,12 +98,12 @@
         <h1>Syna<span class="dot">.</span></h1>
         <p class="role">AI researcher <span class="sep">/</span> AI for healthcare</p>
         <p class="lede">
-          I build machine learning for medicine — from <mark>medical image analysis</mark> and
-          <mark>computer vision</mark> to <mark>generative AI</mark>, <mark>federated learning</mark> and
-          <mark>LLMs</mark>. M.Sc. student in Computational Modeling and Simulation (Applied AI) at
-          <a href="https://tu-dresden.de" target="_blank" rel="noopener">TU Dresden</a> and student research assistant in the
-          <a href="https://www.nct-dresden.de/de/forschung/abteilungen-und-forschungsgruppen/funktionelle-bildgebung-in-der-operativen-onkologie" target="_blank" rel="noopener">Functional Imaging in Surgical Oncology (FBOO)</a> group at <a href="https://www.nct-dresden.de" target="_blank" rel="noopener">NCT Dresden</a> and <a href="https://www.dkfz.de" target="_blank" rel="noopener">DKFZ</a>,
-          with research in Germany, the USA, Taiwan and India.
+          I build machine learning for medicine — <mark>medical imaging</mark>, <mark>generative AI</mark>,
+          <mark>federated learning</mark> and <mark>clinical LLMs</mark>. M.Sc. Applied AI at
+          <a href="https://tu-dresden.de" target="_blank" rel="noopener">TU Dresden</a>; research assistant in the
+          <a href="https://www.nct-dresden.de/de/forschung/abteilungen-und-forschungsgruppen/funktionelle-bildgebung-in-der-operativen-onkologie" target="_blank" rel="noopener">FBOO</a> group at
+          <a href="https://www.nct-dresden.de" target="_blank" rel="noopener">NCT Dresden</a> &amp;
+          <a href="https://www.dkfz.de" target="_blank" rel="noopener">DKFZ</a>.
         </p>
         <div class="links">
           <a class="chip-link" href="mailto:syna.syna@tu-dresden.de"><svg><use href="#i-mail"/></svg>Email</a>
@@ -135,53 +135,74 @@
   <section class="vitals" aria-label="At a glance">
     <canvas id="ecg" class="ecg" aria-hidden="true"></canvas>
     <div class="wrap vitals-row">
-      <div class="vital" style="--c: var(--teal)"><span class="v-label">PUB</span><span class="v-num" data-count="7">7</span><span class="v-unit">papers &amp; chapters</span></div>
-      <div class="vital" style="--c: var(--violet)"><span class="v-label">LAB</span><span class="v-num" data-count="6">6</span><span class="v-unit">research labs worked with</span></div>
-      <div class="vital" style="--c: var(--amber)"><span class="v-label">IP</span><span class="v-num" data-count="3">3</span><span class="v-unit">filed utility patents</span></div>
-      <div class="vital" style="--c: var(--coral)"><span class="v-label">GEO</span><span class="v-num" data-count="4">4</span><span class="v-unit">countries of research<br>DE · US · TW · IN</span></div>
+      <a class="vital" href="#publications" style="--c: var(--teal)"><span class="v-label">PUB</span><span class="v-num" data-count="7">7</span><span class="v-unit">publications</span><span class="v-detail"><i>Cancers</i> ×2 · <i>Bioengineering</i> · 1st-author at <i>JAMA Netw. Open</i> (under review)</span></a>
+      <a class="vital" href="#experience" style="--c: var(--violet)"><span class="v-label">LAB</span><span class="v-num" data-count="6">6</span><span class="v-unit">research labs</span><span class="v-detail">NCT · DKFZ · HIT · William &amp; Mary · NYCU · CCU</span></a>
+      <a class="vital" href="#experience" style="--c: var(--sky)"><span class="v-label">GEO</span><span class="v-num" data-count="4">4</span><span class="v-unit">countries</span><span class="v-detail">Germany · USA · Taiwan · India</span></a>
+      <a class="vital" href="#honors" style="--c: var(--amber)"><span class="v-label">IP</span><span class="v-num" data-count="3">3</span><span class="v-unit">filed patents</span><span class="v-detail">utility patents, Indian Patent Office</span></a>
+      <a class="vital" href="#honors" style="--c: var(--coral)"><span class="v-label">CEO</span><span class="v-num" data-count="1">1</span><span class="v-unit">startup founded</span><span class="v-detail">AIVERSE · Youngest Entrepreneur of the Year 2023</span></a>
     </div>
   </section>
 
-  <!-- ============ FOCUS ============ -->
-  <section id="focus" class="block">
+  <!-- ============ PUBLICATIONS ============ -->
+  <section id="publications" class="block">
     <div class="wrap">
-      <header class="block-head"><span class="fig">01</span><h2>Research focus</h2></header>
-      <div class="focus-grid">
-        <article class="tile" style="--c: var(--sky)">
-          <svg><use href="#i-scan"/></svg>
-          <h3>Medical image analysis</h3>
-          <p>Real-time polyp detection and vascular segmentation on 4K colonoscopy video; spectral imaging for early cancer detection.</p>
-        </article>
-        <article class="tile" style="--c: var(--violet)">
-          <svg><use href="#i-prism"/></svg>
-          <h3>Hyperspectral &amp; SWIR imaging</h3>
-          <p>Snapshot hyperspectral conversion for lesion detection; short-wave infrared data for image-guided cancer surgery.</p>
-        </article>
-        <article class="tile" style="--c: var(--teal)">
-          <svg><use href="#i-shield"/></svg>
-          <h3>Federated learning</h3>
-          <p>Privacy-preserving architectures for surgical oncology models, trained across decentralized clinical datasets.</p>
-        </article>
-        <article class="tile" style="--c: var(--coral)">
-          <svg><use href="#i-spark"/></svg>
-          <h3>Generative AI</h3>
-          <p>Generative methods for reconstructing and analyzing complex surgical and clinical imaging data.</p>
-        </article>
-        <article class="tile" style="--c: var(--amber)">
-          <svg><use href="#i-chat"/></svg>
-          <h3>LLMs in medicine</h3>
-          <p>Benchmarking DeepSeek-R1 and GPT-5 on clinical Type 2 diabetes queries; LLM-generated spinal imaging reports.</p>
-        </article>
-        <article class="tile" style="--c: var(--pink)">
-          <svg><use href="#i-eye"/></svg>
-          <h3>Computer vision</h3>
-          <p>From AI dose calculation for particle therapy to real-time detection systems built at my own startup.</p>
-        </article>
-      </div>
-      <div class="stack-row">
-        <span class="stack-label">stack</span>
-        <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>XGBoost</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Transformers</span><span>Git</span><span>LaTeX</span><span>Linux</span><span>AWS</span>
-      </div>
+      <header class="block-head">
+        <span class="fig">01</span><h2>Publications</h2>
+        <a class="head-link" href="https://scholar.google.com/citations?user=wF8OnwkAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar <svg><use href="#i-arrow"/></svg></a>
+      </header>
+      <ul class="pubs">
+        <li class="pub">
+          <span class="pub-year">2026</span>
+          <div>
+            <h3>DiaBench: A Benchmarking Framework to Evaluate the Performance of LLMs in T2D Diabetes Education</h3>
+            <p class="pub-meta"><b>Syna</b> et al. · <i>JAMA Network Open</i></p>
+            <p class="badges"><span class="badge warn">Under review</span><span class="badge">First author</span></p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-year">2026</span>
+          <div>
+            <h3><a href="https://doi.org/10.3390/cancers18132147" target="_blank" rel="noopener">Early Classification of Bladder Cancer Using Spectrum-Aided Visual Enhancer (SAVE) and Deep Learning Models: A Non-Invasive Technology for Faster Detection</a></h3>
+            <p class="pub-meta">…, <b>Syna</b>, et al. · <i>Cancers</i>, MDPI</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-year">2025</span>
+          <div>
+            <h3><a href="https://doi.org/10.3390/cancers17122049" target="_blank" rel="noopener">Evaluation of Spectral Imaging for Early Esophageal Cancer Detection</a></h3>
+            <p class="pub-meta">…, <b>Syna</b>, et al. · <i>Cancers</i>, MDPI</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-year">2025</span>
+          <div>
+            <h3><a href="https://doi.org/10.3390/bioengineering12070714" target="_blank" rel="noopener">A Novel Snapshot-Based Hyperspectral Conversion for Dermatological Lesion Detection via YOLO Models</a></h3>
+            <p class="pub-meta">…, <b>Syna</b>, et al. · <i>Bioengineering</i>, MDPI</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-year">2025</span>
+          <div>
+            <h3>Optimized Machine Learning Framework for Asthma Detection Using Clinical Data and Textual Analysis</h3>
+            <p class="pub-meta"><b>Syna</b> et al. · <i>Optimization Excellence</i>, Apple Academic Press · book chapter</p>
+            <p class="badges"><span class="badge ok">Accepted</span></p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-year">2025</span>
+          <div>
+            <h3><a href="http://dx.doi.org/10.1515/9783111572970-011" target="_blank" rel="noopener">Integrating AI with RADAR remote sensing</a></h3>
+            <p class="pub-meta"><b>Syna</b> et al. · <i>RADAR: Remote Sensing Data Analysis with AI</i>, De Gruyter Brill · book chapter</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-year">2025</span>
+          <div>
+            <h3><a href="http://dx.doi.org/10.1515/9783111572970-005" target="_blank" rel="noopener">Essentials of RADAR remote sensing and AI integration</a></h3>
+            <p class="pub-meta"><b>Syna</b> et al. · <i>RADAR: Remote Sensing Data Analysis with AI</i>, De Gruyter Brill · book chapter</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -254,125 +275,16 @@
     </div>
   </section>
 
-  <!-- ============ PUBLICATIONS ============ -->
-  <section id="publications" class="block">
-    <div class="wrap">
-      <header class="block-head">
-        <span class="fig">03</span><h2>Publications</h2>
-        <a class="head-link" href="https://scholar.google.com/citations?user=wF8OnwkAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar <svg><use href="#i-arrow"/></svg></a>
-      </header>
-      <ul class="pubs">
-        <li class="pub">
-          <span class="pub-year">2026</span>
-          <div>
-            <h3>DiaBench: A Benchmarking Framework to Evaluate the Performance of LLMs in T2D Diabetes Education</h3>
-            <p class="pub-meta"><b>Syna</b> et al. · <i>JAMA Network Open</i></p>
-            <p class="badges"><span class="badge warn">Under review</span><span class="badge">First author</span></p>
-          </div>
-        </li>
-        <li class="pub">
-          <span class="pub-year">2026</span>
-          <div>
-            <h3><a href="https://doi.org/10.3390/cancers18132147" target="_blank" rel="noopener">Early Classification of Bladder Cancer Using Spectrum-Aided Visual Enhancer (SAVE) and Deep Learning Models: A Non-Invasive Technology for Faster Detection</a></h3>
-            <p class="pub-meta">…, <b>Syna</b>, et al. · <i>Cancers</i>, MDPI</p>
-          </div>
-        </li>
-        <li class="pub">
-          <span class="pub-year">2025</span>
-          <div>
-            <h3><a href="https://doi.org/10.3390/cancers17122049" target="_blank" rel="noopener">Evaluation of Spectral Imaging for Early Esophageal Cancer Detection</a></h3>
-            <p class="pub-meta">…, <b>Syna</b>, et al. · <i>Cancers</i>, MDPI</p>
-          </div>
-        </li>
-        <li class="pub">
-          <span class="pub-year">2025</span>
-          <div>
-            <h3><a href="https://doi.org/10.3390/bioengineering12070714" target="_blank" rel="noopener">A Novel Snapshot-Based Hyperspectral Conversion for Dermatological Lesion Detection via YOLO Models</a></h3>
-            <p class="pub-meta">…, <b>Syna</b>, et al. · <i>Bioengineering</i>, MDPI</p>
-          </div>
-        </li>
-        <li class="pub">
-          <span class="pub-year">2025</span>
-          <div>
-            <h3>Optimized Machine Learning Framework for Asthma Detection Using Clinical Data and Textual Analysis</h3>
-            <p class="pub-meta"><b>Syna</b> et al. · <i>Optimization Excellence</i>, Apple Academic Press · book chapter</p>
-            <p class="badges"><span class="badge ok">Accepted</span></p>
-          </div>
-        </li>
-        <li class="pub">
-          <span class="pub-year">2025</span>
-          <div>
-            <h3><a href="http://dx.doi.org/10.1515/9783111572970-011" target="_blank" rel="noopener">Integrating AI with RADAR remote sensing</a></h3>
-            <p class="pub-meta"><b>Syna</b> et al. · <i>RADAR: Remote Sensing Data Analysis with AI</i>, De Gruyter Brill · book chapter</p>
-          </div>
-        </li>
-        <li class="pub">
-          <span class="pub-year">2025</span>
-          <div>
-            <h3><a href="http://dx.doi.org/10.1515/9783111572970-005" target="_blank" rel="noopener">Essentials of RADAR remote sensing and AI integration</a></h3>
-            <p class="pub-meta"><b>Syna</b> et al. · <i>RADAR: Remote Sensing Data Analysis with AI</i>, De Gruyter Brill · book chapter</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ PROJECTS ============ -->
-  <section id="projects" class="block alt">
-    <div class="wrap">
-      <header class="block-head"><span class="fig">04</span><h2>Selected projects</h2></header>
-      <div class="proj-grid">
-        <article class="proj wide" style="--c: var(--teal)">
-          <span class="readout">2026 — now</span>
-          <h3>Generative AI for Surgical Data</h3>
-          <p>M.Sc. team project in Prof. Speidel's group at NCT Dresden: generative AI methods and architectures for reconstructing and analyzing complex surgical and clinical imaging data.</p>
-        </article>
-        <article class="proj" style="--c: var(--sky)">
-          <span class="readout">−56% false negatives</span>
-          <h3>ML Framework for Asthma Detection</h3>
-          <p>Clinical data and physician notes combined with NLP; tuned thresholds reached 83.2% accuracy and 91.7% precision.</p>
-          <p class="tags">scikit-learn · XGBoost · NLP</p>
-        </article>
-        <article class="proj" style="--c: var(--violet)">
-          <span class="readout">−20% false positives</span>
-          <h3>Proximity Evaluation for Women Safety</h3>
-          <p>Proximity assessment with re-identification algorithms and gait analysis.</p>
-          <p class="tags">TensorFlow · OpenCV · Object tracking</p>
-        </article>
-        <article class="proj" style="--c: var(--coral)">
-          <span class="readout">95% accuracy</span>
-          <h3>Yoga Asanas Detection</h3>
-          <p>Classifies and tracks complex poses in real time.</p>
-          <p class="tags">Keras · TensorFlow · MediaPipe</p>
-        </article>
-        <article class="proj" style="--c: var(--amber)">
-          <span class="readout">−15% false negatives</span>
-          <h3>Crevice &amp; Pothole Detection</h3>
-          <p>Real-time road-anomaly detection mapped to geolocation.</p>
-          <p class="tags">Keras · TensorFlow · OpenCV</p>
-        </article>
-        <article class="proj" style="--c: var(--pink)">
-          <span class="readout">90% accuracy</span>
-          <h3>Hybrid SVM + CNN Classifier</h3>
-          <p>CNN features with SVMs for multi-class household items.</p>
-          <p class="tags">OpenCV · CNN · SVM</p>
-        </article>
-        <article class="proj" style="--c: var(--teal)">
-          <span class="readout">real-time</span>
-          <h3>Attendance System</h3>
-          <p>Facial recognition, mapping and tracking pipeline.</p>
-          <p class="tags">OpenCV · TensorFlow</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ HONORS ============ -->
   <section id="honors" class="block">
     <div class="wrap">
-      <header class="block-head"><span class="fig">05</span><h2>Honors, patents &amp; service</h2></header>
+      <header class="block-head"><span class="fig">03</span><h2>Awards, patents &amp; startup</h2></header>
       <div class="honors">
         <div class="h-col">
+          <h4>Startup</h4>
+          <ul class="h-list">
+            <li><b>Founder &amp; CEO, AIVERSE Private Limited</b> · Sep 2021 — Jun 2023<br><span>Built proprietary computer vision hardware and software (98% accuracy in real-time crop defect detection) and an Automated Skin Lesion Detection Mask.</span></li>
+          </ul>
           <h4>Awards</h4>
           <ul class="h-list">
             <li><b>3rd Place, CeTI Summer School 2026</b> · TU Dresden, Sep 2026<br><span>Co-developed “WalkableOR”, a live mixed-reality Unity demonstrator for telesurgery and the tactile internet, built and pitched to domain experts in under a week.</span></li>
@@ -401,6 +313,106 @@
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ FOCUS ============ -->
+  <section id="focus" class="block alt">
+    <div class="wrap">
+      <header class="block-head"><span class="fig">04</span><h2>Research focus</h2></header>
+      <div class="focus-grid">
+        <article class="tile" style="--c: var(--sky)">
+          <svg><use href="#i-scan"/></svg>
+          <h3>Medical image analysis</h3>
+          <p>Real-time polyp detection and vascular segmentation on 4K colonoscopy video; spectral imaging for early cancer detection.</p>
+        </article>
+        <article class="tile" style="--c: var(--violet)">
+          <svg><use href="#i-prism"/></svg>
+          <h3>Hyperspectral &amp; SWIR imaging</h3>
+          <p>Snapshot hyperspectral conversion for lesion detection; short-wave infrared data for image-guided cancer surgery.</p>
+        </article>
+        <article class="tile" style="--c: var(--teal)">
+          <svg><use href="#i-shield"/></svg>
+          <h3>Federated learning</h3>
+          <p>Privacy-preserving architectures for surgical oncology models, trained across decentralized clinical datasets.</p>
+        </article>
+        <article class="tile" style="--c: var(--coral)">
+          <svg><use href="#i-spark"/></svg>
+          <h3>Generative AI</h3>
+          <p>Generative methods for reconstructing and analyzing complex surgical and clinical imaging data.</p>
+        </article>
+        <article class="tile" style="--c: var(--amber)">
+          <svg><use href="#i-chat"/></svg>
+          <h3>LLMs in medicine</h3>
+          <p>Benchmarking DeepSeek-R1 and GPT-5 on clinical Type 2 diabetes queries; LLM-generated spinal imaging reports.</p>
+        </article>
+        <article class="tile" style="--c: var(--pink)">
+          <svg><use href="#i-eye"/></svg>
+          <h3>Computer vision</h3>
+          <p>From AI dose calculation for particle therapy to real-time detection systems built at my own startup.</p>
+        </article>
+      </div>
+      <div class="stack-row">
+        <span class="stack-label">stack</span>
+        <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>XGBoost</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Transformers</span><span>Git</span><span>LaTeX</span><span>Linux</span><span>AWS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="block">
+    <div class="wrap">
+      <header class="block-head"><span class="fig">05</span><h2>Selected projects</h2></header>
+      <div class="proj-grid top">
+        <article class="proj wide" style="--c: var(--teal)">
+          <span class="readout">2026 — now</span>
+          <h3>Generative AI for Surgical Data</h3>
+          <p>M.Sc. team project in Prof. Speidel's group at NCT Dresden: generative AI methods and architectures for reconstructing and analyzing complex surgical and clinical imaging data.</p>
+        </article>
+        <article class="proj" style="--c: var(--sky)">
+          <span class="readout">−56% false negatives</span>
+          <h3>ML Framework for Asthma Detection</h3>
+          <p>Clinical data and physician notes combined with NLP; tuned thresholds reached 83.2% accuracy and 91.7% precision.</p>
+          <p class="tags">scikit-learn · XGBoost · NLP</p>
+        </article>
+        
+        <article class="proj" style="--c: var(--violet)">
+          <span class="readout">−20% false positives</span>
+          <h3>Proximity Evaluation for Women Safety</h3>
+          <p>Proximity assessment with re-identification algorithms and gait analysis.</p>
+          <p class="tags">TensorFlow · OpenCV · Object tracking</p>
+        </article>
+      </div>
+      <details class="more">
+        <summary>Show 4 more student projects</summary>
+        <div class="proj-grid">
+        
+        <article class="proj" style="--c: var(--coral)">
+          <span class="readout">95% accuracy</span>
+          <h3>Yoga Asanas Detection</h3>
+          <p>Classifies and tracks complex poses in real time.</p>
+          <p class="tags">Keras · TensorFlow · MediaPipe</p>
+        </article>
+        <article class="proj" style="--c: var(--amber)">
+          <span class="readout">−15% false negatives</span>
+          <h3>Crevice &amp; Pothole Detection</h3>
+          <p>Real-time road-anomaly detection mapped to geolocation.</p>
+          <p class="tags">Keras · TensorFlow · OpenCV</p>
+        </article>
+        <article class="proj" style="--c: var(--pink)">
+          <span class="readout">90% accuracy</span>
+          <h3>Hybrid SVM + CNN Classifier</h3>
+          <p>CNN features with SVMs for multi-class household items.</p>
+          <p class="tags">OpenCV · CNN · SVM</p>
+        </article>
+        <article class="proj" style="--c: var(--teal)">
+          <span class="readout">real-time</span>
+          <h3>Attendance System</h3>
+          <p>Facial recognition, mapping and tracking pipeline.</p>
+          <p class="tags">OpenCV · TensorFlow</p>
+        </article>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -442,6 +454,6 @@
   <p class="foot-line">made with care in Dresden · © <span id="year">2026</span> Syna</p>
 </footer>
 
-<script src="script.js?v=202610141645"></script>
+<script src="script.js?v=202610201124"></script>
 </body>
 </html>
